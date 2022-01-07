@@ -4,9 +4,9 @@ services:
   rabbit-mq:
     image: rabbitmq:3.9.12-management
     volumes:
-      - rabbit-data:var/lib/rabbitmq
-      - rabbit-log:var/log/rabbitmq
-      - rabbit-config:etc/rabbitmq
+      - rabbit-data:/var/lib/rabbitmq
+      - rabbit-log:/var/log/rabbitmq
+      - rabbit-config:/etc/rabbitmq
     networks:
       - python-test
       - traefik-net
