@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   rabbit-mq:
-    image: docker pull rabbitmq:3.9.12-management
+    image: rabbitmq:3.9.12-management
     volumes:
       - rabbit-data:var/lib/rabbitmq
       - rabbit-log:/var/log/rabbitmq
@@ -10,9 +10,6 @@ services:
     networks:
       - python-test
       - traefik-net
-    ports:
-      - "5672"
-      - "15672"
     deploy:
       labels:
         traefik.docker.network: "traefik-net"
@@ -30,4 +27,3 @@ volumes:
   rabbit-data:
   rabbit-log:
   rabbit-config:
-  
