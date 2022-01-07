@@ -1,0 +1,33 @@
+version: '3.2'
+
+services:
+  rabbit-mq:
+    image: docker pull rabbitmq:3.9.12-management
+    volumes:
+      - rabbit-data:var/lib/rabbitmq
+      - rabbit-log:/var/log/rabbitmq
+      - rabbit-config:/etc/rabbitmq
+    networks:
+      - python-test
+      - traefik-net
+    expose:
+      - 5672
+      - 15672
+    deploy:
+      labels:
+        traefik.docker.network: "traefik-net"
+        traefik.enable: "true"
+        traefik.frontend.rule: "Host:rabbit.j3dro.de,www.rabbit.j3dro.de"
+        traefik.port: 15672
+
+networks:
+  python-test:
+    attachable: true
+  traefik-net:
+    external: true
+
+volumes:
+  rabbit-data:
+  rabbit-log:
+  rabbit-config:
+  
