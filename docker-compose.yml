@@ -16,6 +16,9 @@ services:
         traefik.enable: "true"
         traefik.frontend.rule: "Host:rabbit.j3dro.de,www.rabbit.j3dro.de"
         traefik.port: 15672
+    environment:
+        RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+        RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
 
 networks:
   python-test:
