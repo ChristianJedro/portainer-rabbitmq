@@ -10,7 +10,7 @@ services:
     networks:
       - python-test
       - traefik-net
-    expose:
+    ports:
       - 5672
       - 15672
     deploy:
